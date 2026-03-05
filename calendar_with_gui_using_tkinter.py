@@ -26,4 +26,18 @@ def update_calendar(year, month):
                     label.configure(text_color="red")
             label.grid(row=row + 1, column=col, padx=5, pady=5)
 
-            
+    def next_month_action():
+        nonlocal current_year, current_month
+        current_month += 1
+        if current_month > 12:
+            current_month = 1
+            current_year += 1
+        update_calendar(current_year, current_month)
+
+    def previous_month_action():
+        nonlocal current_year, current_month
+        current_month -= 1
+        if current_month < 1:
+            current_month = 12
+            current_year -= 1
+        update_calendar(current_year, current_month)
